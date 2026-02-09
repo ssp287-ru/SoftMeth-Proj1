@@ -62,10 +62,40 @@ public class Schedule {
      * @param section
      * @param student
      */
-   //public void enroll(Section section, Student student){
+   public void enroll(Section section, Student student){
+       for (int i = 0; i < sections.length; i++){
+            if (sections[i].getTime().getHour() == section.getTime().getHour() // checks if checked section has the same time
+            && sections[i].contains(student)){ // checks if section with matching time contains the student
+                System.out.println("Time conflict: " + student.toString() +" enrolled in another class at " + section.getTime().toString());
+                return;
+            }
+        } // checks for time conflicts for given section
+       int studentCreditHours = 0;
+       for (int i = 0; i < sections[i].length; i++){
+           if (sections[i].contains(student)){
+               studentCreditHours += sections[i].getCourse().getCreditHours();
+           }
+       } // calculates the student's current credit hours
+       if (studentCreditHours + section.getCourse().getCreditHours() > 18){
+           System.out.println("Cannot enroll " + student.toString() + "; now has " + studentCreditHours +
+                   " will exceeds credit limit of 18.");
+           return;
+       } // checks if enrolling would go over credit limit
+       if (section.isFull()){
+           System.out.println("Cannot enroll " + student.toString() + ", " + section.getCourse().name()
+                   + " " + section.getTime().getHour() + ":" + section.getTime().getMinute() + " is full.");
+           return;
+       } // checks if section is full;
+        sections[find(section)].enroll(student); // enrolls student in submitted section
+       System.out.println(student.toString() + " enrolled to " + section.getCourse().name() + " " +
+               section.getTime().getHour() + ":" + section.getTime().getMinute());
+   }
 
-   //}
-
+    /**
+     * Checks if a submitted section is contained within current list of sections
+     * @param section
+     * @return true if section is in current list, false otherwise
+     */
     public boolean contains(Section section) {
        for (int i = 0; i < sections.length; i++){
            if (sections[i].equals(section)){
@@ -75,9 +105,70 @@ public class Schedule {
        return false;
     }
 
+    /**
+     * Clones sections array, sorts by campus first, building second, then prints
+     */
     public void printByClassroom() {
-        //for (int i  )
+        Section[] sortedSections = sections;
+        for (int i = 0; i < sortedSections.length; i++){
+            for (int j = i; j > 0; j--){
+                switch(sortedSections[j].compareTo(sortedSections[j-1], "campus")){
+                    case(1):
+                        Section swap = sortedSections[j];
+                        sortedSections[j-1] = sortedSections[j];
+                        sortedSections[j] = swap;
+                    case(0):
+                        if (sortedSections[j].compareTo(sortedSections[j - 1], "building") == 1) {
+                            Section swapA = sortedSections[j]; // alternate name used to avoid errors during compilation
+                            sortedSections[j - 1] = sortedSections[j];
+                            sortedSections[j] = swapA;
+                        }
+                        else{ j = 0;}
+                    default:
+                        j = 0;
+                }
+
+
+            }
+        }
+        System.out.println("* List of sections ordered by campus, building *");
+        for (int i = 0; i < sortedSections.length; i++){
+            sortedSections[i].print();
+        }
+        System.out.println("* end of list **");
     } // sort by campus/building
-//    public void printByCourse() {} //sort by course number/period
+
+    /**
+     * Clones sections array, sorts by course number first, period second, then prints
+     */
+    public void printByCourse() {
+        Section[] sortedSections = sections;
+        for (int i = 0; i < sortedSections.length; i++){
+            for (int j = i; j > 0; j--){
+                switch(sortedSections[j].compareTo(sortedSections[j-1], "courseNumber")){
+                    case(1):
+                        Section swap = sortedSections[j];
+                        sortedSections[j] = sortedSections[j-1];
+                        sortedSections[j-1] = swap;
+                    case(0):
+                        if(sortedSections[j].compareTo(sortedSections[j-1], "period") == 1){
+                            Section swapA = sortedSections[j]; // alternate name used to avoid errors on compilation
+                            sortedSections[j] = sortedSections[j-1];
+                            sortedSections[j-1] = swapA;
+                        }
+                        else{
+                            j = 0;
+                        }
+                    default:
+                        j = 0;
+                }
+            }
+        }
+        System.out.println("* List of sections ordered by course number, section time *");
+        for (int i = 0; i < sortedSections.length; i++){
+            sortedSections[i].print();
+        }
+        System.out.println("* end of list *");
+    } //sort by course number/period
 
 }

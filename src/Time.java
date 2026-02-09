@@ -29,18 +29,33 @@ public enum Time {
      */
     @Override
     public String toString(){
-        if (minute == 0){
-            return name() + ", " + hour + ":00";
-        }
-        return name() + ", " + hour + ":" + minute;
+        return switch (hour) {
+            case (8) -> "period 1";
+            case (10) -> "period 2";
+            case (12) -> "period 3";
+            case (14) -> "period 4";
+            case (15) -> "period 5";
+            default -> "period 6";
+        };
     }
 
     /**
      * Accessor Method for hour
-     * @return Returns hour parameter for a given time object
+     * @return Returns hour parameter for a given time object as a String
      */
-    public int getHour(){
-        return hour;
+    public String getHour(){
+        return Integer.toString(hour);
+    }
+
+    /**
+     * Accessor Method for minute
+     * @return Returns minute parameter for a given time object as a String
+     */
+    public String getMinute(){
+        if (minute == 0){
+            return "00";
+        }
+        return Integer.toString(minute);
     }
 
 

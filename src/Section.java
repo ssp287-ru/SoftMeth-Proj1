@@ -4,20 +4,97 @@ public class Section {
     private Instructor instructor;
     private Classroom classroom;
     private Time time;
-    //private Student[] roster;
+    private Student[] roster;
     private int numStudents;
 
-    //public void enroll(Student student) {}
+    /**
+     * Constructor Method, roster instantialized as an empty size 4 array and numStudents set to 0
+     * @param course
+     * @param instructor
+     * @param classroom
+     * @param time
+     */
+    public Section(Course course, Instructor instructor, Classroom classroom, Time time) {
+        this.course = course;
+        this.instructor = instructor;
+        this.classroom = classroom;
+        this.time = time;
+        this.roster = new Student[4];
+        this.numStudents = 0;
+    }
 
-    //public void drop(Student student) {}
+    /**
+     * Adds a student to current section and upticks numStudents
+     * @param student
+     */
+    public void enroll(Student student) {
+        roster[numStudents] = student;
+        numStudents++;
+    }
 
-    //public boolean contains(Student student) { }
+    /**
+     * Searches for student index in roster and removes, shifting elements left. Decrements numStudents
+     * @param student
+     */
+    public void drop(Student student) {
+        for (int i = 0; i < numStudents; i++){
+            if (roster[i].equals(student) && i < roster.length - 1){
+                for (int j = i; j < numStudents - 1; j++){
+                    roster[j] = roster[j + 1];
+                }
+                roster[roster.length - 1] = null;
+            } // must shift elements left
+            else if (roster[i].equals(student) && i == roster.length - 1){
+                roster[i] = null;
+            }
+        }
+        numStudents--;
+    }
 
+    /**
+     * Checks if section contains a specified student
+     * @param student
+     * @return true if student is found in section, false otherwise
+     */
+    public boolean contains(Student student) {
+        for (int i = 0; i < roster.length; i++){
+            if (roster[i].equals(student)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if a section is full
+     * @return true if there are 4 students in the section, false otherwise
+     */
     public boolean isFull() {
         return numStudents == 4;
     }
 
-    public void print() { }
+    /**
+     * Prints out the section with the format:
+     * [courseName timeHour:timeMinute] [instructor] [Classroom, Building, Campus]
+     * **Roster**
+     * List of Students
+     * or if there are no students
+     * **No students enrolled**
+     */
+    public void print() {
+        System.out.println("[" + course.name() + " " + time.getHour() + ":" + time.getMinute() + "] [" +
+                instructor.name() + "] [" + classroom.name() + ", " + classroom.getBuilding() + ", "
+        + classroom.getCampus() + "]");
+        if (numStudents == 0){
+            System.out.println("**No students enrolled**");
+        }
+        else{
+            System.out.println("**Roster**");
+            for (int i = 0; i < numStudents; i++){
+                System.out.println(roster[i].toString());
+            }
+        }
+    }
 
     /**
      * Accessor Method
@@ -62,8 +139,8 @@ public class Section {
             return this.getCourse().name().compareToIgnoreCase(
                     section.getCourse().name());
         } // compare this course number to section's course number
-        int sectionHour = section.getTime().getHour();
-        int thisSectionHour = this.getTime().getHour();
+        int sectionHour = Integer.parseInt(section.getTime().getHour());
+        int thisSectionHour = Integer.parseInt(this.getTime().getHour());
         if (thisSectionHour < sectionHour){
             return -1;
         }
@@ -74,6 +151,5 @@ public class Section {
             return 1;
         }
     }
-
 
 }
