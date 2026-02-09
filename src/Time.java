@@ -10,13 +10,13 @@ public enum Time {
     periodFive(15, 50),
     periodSix(17, 10);
 
-    private final int hour; // Hour a class begins, does not include AM or PM distinction
+    private final int hour; // Hour a class begins, uses military time designations
     private final int minute; // Minute in the hour a class begins
 
     /**
      * Constructor used by JVM to create Time objects defined above
-     * @param hour
-     * @param minute
+     * @param hour Hour section takes place
+     * @param minute minute in hour section takes place
      */
     Time(int hour, int minute){
         this.hour = hour;
