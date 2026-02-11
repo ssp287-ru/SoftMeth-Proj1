@@ -15,6 +15,8 @@ public enum Course {
     CCD (4, "Freshman"),
     HST (3, "Freshman");
 
+
+
     private final int creditHours;
     private final String standing;
     private final String reqMajor;

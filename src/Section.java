@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Section {
 
     private Course course;
@@ -82,9 +84,7 @@ public class Section {
      * **No students enrolled**
      */
     public void print() {
-        System.out.println("[" + course.name() + " " + time.getHour() + ":" + time.getMinute() + "] [" +
-                instructor.name() + "] [" + classroom.name() + ", " + classroom.getBuilding() + ", "
-        + classroom.getCampus() + "]");
+        System.out.println(this.toString());
         if (numStudents == 0){
             System.out.println("**No students enrolled**");
         }
@@ -121,6 +121,12 @@ public class Section {
     }
 
     /**
+     * Accessor Method
+     * @return this.instructor
+     */
+    public Instructor getInstructor() { return instructor; }
+
+    /**
      * Compares two sections based on a submitted specification, uses period specification if not a valid specification
      * @param section Section to compare this.section to
      * @param specification Specifies to compare by campus, building, courseNumber, and period/anything else
@@ -150,6 +156,37 @@ public class Section {
         else{
             return 1;
         }
+    }
+
+    /**
+     * Overrides .equals, checks if toStrings for courses, instructors, classrooms, times, and rosters are the same
+     * @param obj   the reference object with which to compare.
+     * @return True if all 5 checks are the same, false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Section){
+            if (this.getCourse().toString().equals(((Section) obj).getCourse().toString()) // check if courses are the same
+            && this.getInstructor().toString().equals(((Section) obj).getInstructor().toString()) // check if instructors are the same
+            && this.getClassroom().toString().equals(((Section) obj).getInstructor().toString()) // check if classrooms are the same
+            && this.getTime().toString().equals(((Section) obj).getTime().toString()) // check if times are the same
+            && Arrays.equals(this.roster, ((Section) obj).roster)){ // check if rosters are the same
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Overrides toString() method, returns a string with the format:
+     * [courseName timeHour:timeMinute] [instructorName] [classroomRoom, classroomBuilding, classroomCampus]
+     * @return String with format [courseName timeHour:timeMinute] [instructorName] [classroomRoom, classroomBuilding, classroomCampus]
+     */
+    @Override
+    public String toString(){
+        return "[" + this.getCourse().name() + " " + this.getTime().getHour() + ":" + this.getTime().getMinute() + "] [" +
+                this.getInstructor().name() + "] [" + this.getClassroom().name() + ", " + this.getClassroom().getBuilding() + ", "
+                + this.getClassroom().getCampus() + "]";
     }
 
 }

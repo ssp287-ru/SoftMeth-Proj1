@@ -71,7 +71,7 @@ public class Schedule {
             }
         } // checks for time conflicts for given section
        int studentCreditHours = 0;
-       for (int i = 0; i < sections[i].length; i++){
+       for (int i = 0; i < sections.length; i++){
            if (sections[i].contains(student)){
                studentCreditHours += sections[i].getCourse().getCreditHours();
            }
