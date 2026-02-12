@@ -1,10 +1,16 @@
+package project1;
+
+/**
+ * Class that defines overall schedule, including list of sections and number of sections
+ * @author Shivang Patel
+ */
 public class Schedule {
     private Section[] sections;
     private int numSections;
 
     /**
      * Finds index of given section in sections array
-     * @param section Section to search for
+     * @param section project1.Section to search for
      * @return Index of given section, returns -1 if not found
      */
     private int find(Section section) {
@@ -29,7 +35,7 @@ public class Schedule {
 
     /**
      * Adds a section to the sections array
-     * @param section Section to add to the sections array
+     * @param section project1.Section to add to the sections array
      */
    public void add(Section section) {
         if (sections.length == numSections){
@@ -40,8 +46,8 @@ public class Schedule {
    }
 
     /**
-     * Removes specified section, if section is in middle of array copy elements left and delete last element.
-     * @param section Section to be deleted
+     * Removes specified section
+     * @param section project1.Section to be deleted
      */
    public void remove(Section section) {
        for (int i = 0; i < sections.length; i++){
@@ -58,7 +64,7 @@ public class Schedule {
    }
 
     /**
-     * Checks if section is full, student has too many credit hours, or student has time conflict, if none then enrolls student to section
+     * Enrolls student into section after verifying they are able to enroll in section.
      * @param section
      * @param student
      */
@@ -66,7 +72,7 @@ public class Schedule {
        for (int i = 0; i < sections.length; i++){
             if (sections[i].getTime().getHour() == section.getTime().getHour() // checks if checked section has the same time
             && sections[i].contains(student)){ // checks if section with matching time contains the student
-                System.out.println("Time conflict: " + student.toString() +" enrolled in another class at " + section.getTime().toString());
+                System.out.println("project1.Time conflict: " + student.toString() +" enrolled in another class at " + section.getTime().toString());
                 return;
             }
         } // checks for time conflicts for given section
@@ -106,7 +112,7 @@ public class Schedule {
     }
 
     /**
-     * Clones sections array, sorts by campus first, building second, then prints
+     * Prints sections array ordered by campus first, then building
      */
     public void printByClassroom() {
         Section[] sortedSections = sections;
@@ -139,7 +145,7 @@ public class Schedule {
     } // sort by campus/building
 
     /**
-     * Clones sections array, sorts by course number first, period second, then prints
+     * Prints sections array ordered by course number, then period
      */
     public void printByCourse() {
         Section[] sortedSections = sections;

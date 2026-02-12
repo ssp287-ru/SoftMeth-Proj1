@@ -1,3 +1,5 @@
+package project1;
+
 /**
  * Enum class for Majors, includes additional properties: School
  * @author Lucas Barrales & Shivang Patel
@@ -13,14 +15,14 @@ public enum Major {
 
     /**
      * Constructor method used by JVM to construct Major objects defined above
-     * @param school
+     * @param school School that offers said major
      */
     Major(String school){
         this.school = school;
     }
 
     /**
-     * Getter Method
+     * Getter Method for School
      * @return
      */
     public String getSchool(){
@@ -28,12 +30,18 @@ public enum Major {
     }
 
     /**
+     * Getter Method for Major as a String
+     * @return
+     */
+    public String getMajor() { return this.name(); }
+
+    /**
      * Overrides toString() method
      * @return Major with the format majorName,schoolName
      */
     @Override
     public String toString(){
-        return this.name() + "," + this.getSchool();
+        return this.getMajor() + "," + this.getSchool();
     }
 
 

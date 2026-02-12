@@ -1,5 +1,11 @@
-import java.util.Arrays;
+package project1;
+/**
+ * Defines a section in the overall schedule
+ * Includes the course, instructor, classroom, time/period, and roster of students in the class
+ * @author Shivang Patel
+ */
 
+import java.util.Arrays;
 public class Section {
 
     private Course course;
@@ -77,7 +83,7 @@ public class Section {
 
     /**
      * Prints out the section with the format:
-     * [courseName timeHour:timeMinute] [instructor] [Classroom, Building, Campus]
+     * [courseName timeHour:timeMinute] [instructor] [project1.Classroom, Building, Campus]
      * **Roster**
      * List of Students
      * or if there are no students
@@ -128,7 +134,7 @@ public class Section {
 
     /**
      * Compares two sections based on a submitted specification, uses period specification if not a valid specification
-     * @param section Section to compare this.section to
+     * @param section project1.Section to compare this.section to
      * @param specification Specifies to compare by campus, building, courseNumber, and period/anything else
      * @return -1 if this.section is earlier than section, 1 if section is earlier, 0 if same
      */

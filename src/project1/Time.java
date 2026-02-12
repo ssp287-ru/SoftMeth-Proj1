@@ -1,3 +1,5 @@
+package project1;
+
 /**
  * Enum class for class periods / time, includes two additional properties - Hour and Minute
  * @author Shivang Patel
@@ -14,7 +16,7 @@ public enum Time {
     private final int minute; // Minute in the hour a class begins
 
     /**
-     * Constructor used by JVM to create Time objects defined above
+     * Constructor used by JVM to create project1.Time objects defined above
      * @param hour Hour section takes place
      * @param minute minute in hour section takes place
      */

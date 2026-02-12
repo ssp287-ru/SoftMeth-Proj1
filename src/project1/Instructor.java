@@ -1,3 +1,5 @@
+package project1;
+
 /**
  * Enum class for Instructors, has no additional properties
  * @author Shivang Patel

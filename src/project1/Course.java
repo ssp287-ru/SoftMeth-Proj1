@@ -1,3 +1,5 @@
+package project1;
+
 /**
  * Enum Class for Courses, includes additional properties: Credit Hours, Standing & Major
  * @author Shivang Patel
@@ -57,19 +59,19 @@ public enum Course {
 
     /**
      * Getter method for Credit Hours
-     * @return Course's Credit Hours
+     * @return project1.Course's Credit Hours
      */
     public int getCreditHours(){return this.creditHours;}
 
     /**
      * Getter method for Standing
-     * @return Course's Required Standing
+     * @return project1.Course's Required Standing
      */
     public String getStanding(){return this.standing;}
 
     /**
      * Getter method for ReqMajor, checks to make sure it exists before returning
-     * @return Course's Required Major, null if no required major
+     * @return project1.Course's Required Major, null if no required major
      */
     public String getReqMajor(){return this.reqMajor;}
 

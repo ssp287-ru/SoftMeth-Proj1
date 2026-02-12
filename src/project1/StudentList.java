@@ -1,7 +1,10 @@
+package project1;
+
 /**
- * The StudentList class manages a collection of Student objects
+ * The project1.StudentList class manages a collection of project1.Student objects
  * @author Lucas Barrales
  */
+
 public class StudentList {
 
     //Initial capacity of the array
@@ -13,18 +16,28 @@ public class StudentList {
     //Number of students currently in the list
     private int size;
 
-    //Constructor; initializes the array and size
+    /**
+     * Constructor Method
+     * Initializes students as array size 4 & size as int 0
+     */
     public StudentList(){
         students = new Student[INITIAL_CAPACITY];
         size = 0;
     }
 
-    //Checks if the list is empty
+    /**
+     * Checks if students array is empty
+     * @return True if size == 0, False otherwise
+     */
     public boolean isEmpty(){
         return size == 0;
     }
 
-    //Finds the index of the student in the list
+    /**
+     * Checks for submitted student in this.students
+     * @param student
+     * @return Index in students if student found, -1 otherwise
+     */
     private int find(Student student){
         for(int i = 0; i < size; i++){
             if(students[i].equals(student)) {
@@ -34,9 +47,11 @@ public class StudentList {
         return -1;
     }
 
-    //increases the size of the array when full
+    /**
+     * Increases size of students array by 4 and copies all students over
+     */
     private void grow(){
-        Student[] newArray = new Student[students.length * 2];
+        Student[] newArray = new Student[students.length + 4];
 
         //Copy old array into new array
         for (int i = 0; i < size; i++){
@@ -45,7 +60,6 @@ public class StudentList {
         students = newArray;
     }
 
-    //adds a student to the list
     public boolean add(Student student){
         if (find(student) != -1) {
             return false;
@@ -78,15 +92,18 @@ public class StudentList {
         return true;
     }
 
-    //prints all students in list
+    /**
+     * Prints out student list
+     * Prints "student list is empty" is list is empty, else prints
+     */
     public void print() {
         if (isEmpty()){
-            System.out.println("Student list is empty.");
+            System.out.println("project1.Student list is empty!");
             return;
         }
 
         for (int i = 0; i < size; i++){
-            System.out.println(students[i]);
+            System.out.println(students[i].toString());
         }
 
     }
