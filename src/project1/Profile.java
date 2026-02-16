@@ -129,5 +129,29 @@ public class Profile implements Comparable<Profile> {
         }
     }
 
+    public static void main(String[] args){
+        Profile student1 = new Profile("Otto", "Octavious", new Date(1, 10, 1931));
+        Profile student2 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
+        System.out.println(student1.compareTo(student2)); // -1, from last name being earlier
+        student1 = new Profile("Otto", "Parker", new Date(1, 10, 1931));
+        student2 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
+        System.out.println(student1.compareTo(student2)); // -1, from first name being earlier
+        student1 = new Profile("Peter", "Parker", new Date(1, 10, 1931));
+        student2 = new Profile("Peter", "Parker", new Date(1, 11, 1931));
+        System.out.println(student1.compareTo(student2)); // -1, from date being earlier
+        student2 = student1;
+        System.out.println(student1.compareTo(student2)); // 0, from profiles being the same
+        student1 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
+        student2 = new Profile("Otto", "Octavious", new Date(1, 10, 1931));
+        System.out.println(student1.compareTo(student2)); // 1, from last name being earlier
+        student1 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
+        student2 = new Profile("Otto", "Parker", new Date(1, 10, 1931));
+        System.out.println(student1.compareTo(student2)); // 1, from first name being earlier
+        student1 = new Profile("Peter", "Parker", new Date(1, 11, 1931));
+        student2 = new Profile("Peter", "Parker", new Date(1, 10, 1931));
+        System.out.println(student1.compareTo(student2)); // 1, from date being earlier
+
+    }
+
 }
 
