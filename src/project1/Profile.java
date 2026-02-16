@@ -132,24 +132,24 @@ public class Profile implements Comparable<Profile> {
     public static void main(String[] args){
         Profile student1 = new Profile("Otto", "Octavious", new Date(1, 10, 1931));
         Profile student2 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
-        System.out.println(student1.compareTo(student2)); // -1, from last name being earlier
+        System.out.println(student1.compareTo(student2)); // Test Case 1
         student1 = new Profile("Otto", "Parker", new Date(1, 10, 1931));
         student2 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
-        System.out.println(student1.compareTo(student2)); // -1, from first name being earlier
+        System.out.println(student1.compareTo(student2)); // Test Case 2
         student1 = new Profile("Peter", "Parker", new Date(1, 10, 1931));
         student2 = new Profile("Peter", "Parker", new Date(1, 11, 1931));
-        System.out.println(student1.compareTo(student2)); // -1, from date being earlier
+        System.out.println(student1.compareTo(student2)); // Test Case 3
         student2 = student1;
-        System.out.println(student1.compareTo(student2)); // 0, from profiles being the same
+        System.out.println(student1.compareTo(student2)); // Test Case 4
         student1 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
         student2 = new Profile("Otto", "Octavious", new Date(1, 10, 1931));
-        System.out.println(student1.compareTo(student2)); // 1, from last name being earlier
+        System.out.println(student1.compareTo(student2)); // Test Case 5
         student1 = new Profile("Peter", "Parker", new Date(5, 10, 1931));
         student2 = new Profile("Otto", "Parker", new Date(1, 10, 1931));
-        System.out.println(student1.compareTo(student2)); // 1, from first name being earlier
+        System.out.println(student1.compareTo(student2)); // Test Case 6
         student1 = new Profile("Peter", "Parker", new Date(1, 11, 1931));
         student2 = new Profile("Peter", "Parker", new Date(1, 10, 1931));
-        System.out.println(student1.compareTo(student2)); // 1, from date being earlier
+        System.out.println(student1.compareTo(student2)); // Test Case 7
 
     }
 

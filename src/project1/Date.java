@@ -177,12 +177,12 @@ public class Date implements Comparable<Date>{
         Date invalid4 = new Date(13, 4, 2006); // the 4th of the 13th month, 2006, should be invalid
         Date valid1 = new Date(2, 29, 2004); // Feb 29th, 2004, should be valid
         Date valid2 = new Date(10, 31, 2005); // October 31st, 2005, should be valid
-        System.out.println(invalid1.isValid());
-        System.out.println(invalid2.isValid());
-        System.out.println(invalid3.isValid());
-        System.out.println(invalid4.isValid());
-        System.out.println(valid1.isValid());
-        System.out.println(valid2.isValid());
+        System.out.println(invalid1.isValid()); // Test Case 1
+        System.out.println(invalid2.isValid()); // Test Case 2
+        System.out.println(invalid3.isValid()); // Test Case 3
+        System.out.println(invalid4.isValid()); // Test Case 4
+        System.out.println(valid1.isValid()); // Test Case 5
+        System.out.println(valid2.isValid()); // Test Case 6
     }
 
 }
