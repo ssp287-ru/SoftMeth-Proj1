@@ -1,11 +1,14 @@
-package project1;
+package project2;
+
+import project1.Major;
+import project1.Profile;
 
 /**
  * Defines a student in the system
  * Includes student profile, major, and credits
  * @author Lucas Barrales
  */
-public class Student implements Comparable<Student>{
+public abstract class Student implements Comparable<Student>{
 
     //Instance variables store student data
     private Profile profile;
@@ -66,7 +69,7 @@ public class Student implements Comparable<Student>{
 
     /**
      * Calculates a student's standing based on credits
-      * @return project1.Student's Standing (Freshman/Sophomore/Junior/Senior)
+      * @return project2.Student's Standing (Freshman/Sophomore/Junior/Senior)
      */
     public String getStanding(){
         if (credits < 30){
@@ -93,7 +96,7 @@ public class Student implements Comparable<Student>{
 
     /**
      * Overrides equals() method
-      * @param otherObject project1.Student object to compare to
+      * @param otherObject project2.Student object to compare to
      * @return true if student profiles are equal, false otherwise
      */
     @Override
@@ -115,5 +118,7 @@ public class Student implements Comparable<Student>{
     public int compareTo(Student otherStudent){
         return this.getProfile().compareTo(otherStudent.getProfile());
     }
+
+    public abstract double tuition(int creditsEnrolled);
 
 }

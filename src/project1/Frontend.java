@@ -13,6 +13,7 @@ public class Frontend {
     private static final String MSG_RUNNING = "Registration System is running.";
     private static final String MSG_TERMINATED = "Registration System is terminated.";
     private static final String MSG_INVALID = "Invalid command.";
+    private Schedule scheduleTest;
 
     /**
      Run the registration system by continuously reading and processing commands.
@@ -184,6 +185,6 @@ public class Frontend {
      Handle the PC command to print schedule sorted by course number, then period.
      */
     private void handlePrintScheduleByCourse() {
-        System.out.println("Print schedule by course command received.");
+        scheduleTest.printByCourse();
     }
 }

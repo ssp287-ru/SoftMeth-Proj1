@@ -1,5 +1,7 @@
 package project1;
 
+import project2.Student;
+
 /**
  * Class that defines overall schedule, including list of sections and number of sections
  * @author Shivang Patel

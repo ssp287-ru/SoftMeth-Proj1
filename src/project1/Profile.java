@@ -1,7 +1,7 @@
 package project1;
 
 /**
- * Class used to define project1.Student Profiles
+ * Class used to define project2.Student Profiles
  * Includes firstName, lastName, & date of birth
  * @author Lucas Barrales
  */

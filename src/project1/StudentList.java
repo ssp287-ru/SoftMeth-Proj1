@@ -1,7 +1,9 @@
 package project1;
 
+import project2.Student;
+
 /**
- * The project1.StudentList class manages a collection of project1.Student objects
+ * The project1.StudentList class manages a collection of project2.Student objects
  * @author Lucas Barrales
  */
 
@@ -98,7 +100,7 @@ public class StudentList {
      */
     public void print() {
         if (isEmpty()){
-            System.out.println("project1.Student list is empty!");
+            System.out.println("project2.Student list is empty!");
             return;
         }
 

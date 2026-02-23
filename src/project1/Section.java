@@ -5,6 +5,8 @@ package project1;
  * @author Shivang Patel
  */
 
+import project2.Student;
+
 import java.util.Arrays;
 public class Section {
 
