@@ -24,13 +24,14 @@ public class International extends NonResident{
     }
 
 
-    // Waiting on email clarification to come back to fully implement
     @Override
     public double tuition(int creditsEnrolled) {
-        if(isStudyAbroad){
-            return 1;
+        if (isStudyAbroad){
+            return universityFee + adminFee + healthInsurance;
         }
-        return 0;
+        else{
+            return internationalTuition + universityFee + adminFee + healthInsurance;
+        }
     }
 
 }

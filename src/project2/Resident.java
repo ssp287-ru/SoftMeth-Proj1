@@ -1,6 +1,5 @@
 package project2;
 
-import project1.Date;
 import project1.Major;
 import project1.Profile;
 

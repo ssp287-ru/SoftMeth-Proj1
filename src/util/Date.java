@@ -1,4 +1,4 @@
-package project1;
+package util;
 /**
  * Defines dates based on integeres representing month, day, and year
  * Months are defined 1-12
@@ -74,7 +74,7 @@ public class Date implements Comparable<Date>{
 
     /**
      * Defines how date object is printed with toString() method
-     * @return project1.Date in format MM/DD/YYYY
+     * @return util.Date in format MM/DD/YYYY
      */
     @Override
     public String toString() {
@@ -83,7 +83,7 @@ public class Date implements Comparable<Date>{
 
     /**
      * Compares two date objects and checks if they're equal
-     * @param other project1.Date object to compare
+     * @param other util.Date object to compare
      * @return True if years, months, and days are same, false otherwise
      */
     @Override

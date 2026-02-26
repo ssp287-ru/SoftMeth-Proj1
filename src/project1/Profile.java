@@ -1,5 +1,7 @@
 package project1;
 
+import util.Date;
+
 /**
  * Class used to define project2.Student Profiles
  * Includes firstName, lastName, & date of birth
@@ -42,7 +44,7 @@ public class Profile implements Comparable<Profile> {
     }
 
     /**
-     * Getter method for project1.Date of Birth
+     * Getter method for util.Date of Birth
      * @return
      */
     public Date getDateOfBirth() {

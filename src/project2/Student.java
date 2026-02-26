@@ -119,6 +119,16 @@ public abstract class Student implements Comparable<Student>{
         return this.getProfile().compareTo(otherStudent.getProfile());
     }
 
+    /**
+     * Same functionality as other compareTo() function, used for overriding in Sort method
+     * @param otherStudent
+     * @param specification
+     * @return -1 if this.profile is before, 1 if otherStudent.profile is before, 0 if equal
+     */
+    public int compareTo(Student otherStudent, String specification){
+        return this.getProfile().compareTo(otherStudent.getProfile());
+    }
+
     public abstract double tuition(int creditsEnrolled);
 
 }
