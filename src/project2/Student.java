@@ -129,6 +129,11 @@ public abstract class Student implements Comparable<Student>{
         return this.getProfile().compareTo(otherStudent.getProfile());
     }
 
+    /**
+     * Abstract method to force inherited to create tuition functions
+     * @param creditsEnrolled
+     * @return
+     */
     public abstract double tuition(int creditsEnrolled);
 
 }

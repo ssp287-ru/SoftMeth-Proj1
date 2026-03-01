@@ -1,13 +1,14 @@
 package project1;
 
 import project2.Student;
+import util.List;
 
 /**
  * The project1.StudentList class manages a collection of project2.Student objects
  * @author Lucas Barrales
  */
 
-public class StudentList {
+public class StudentList extends List {
 
     //Initial capacity of the array
     private static final int INITIAL_CAPACITY = 4;
@@ -25,6 +26,14 @@ public class StudentList {
     public StudentList(){
         students = new Student[INITIAL_CAPACITY];
         size = 0;
+    }
+
+    /**
+     * Getter method
+     * @return this.size
+     */
+    public int getSize(){
+        return this.size;
     }
 
     /**

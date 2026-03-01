@@ -3,6 +3,10 @@ package project2;
 import project1.Major;
 import project1.Profile;
 
+/**
+ * Defines a Resident Student
+ * @author Shivang Patel
+ */
 public class Resident extends Student {
     private double scholarship;
     private final double perCreditHour = 482;
@@ -22,8 +26,11 @@ public class Resident extends Student {
         this.scholarship = scholarship;
     }
 
-
-    @Override
+    /**
+     * Tuition method for Resident students
+     * @param creditsEnrolled
+     * @return
+     */
     public double tuition(int creditsEnrolled) {
         boolean isFullTime = (creditsEnrolled >= 12); // 12+ credits is full-time
         if (isFullTime){

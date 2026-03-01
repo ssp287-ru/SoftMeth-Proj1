@@ -3,6 +3,10 @@ package project2;
 import project1.Major;
 import project1.Profile;
 
+/**
+ * Defines an International student, holds whether they are study abroad or not.
+ * @author Shivang Patel
+ */
 public class International extends NonResident{
     private boolean isStudyAbroad;
     private double internationalTuition = 35758;
@@ -24,6 +28,11 @@ public class International extends NonResident{
     }
 
 
+    /**
+     * Tuition method for International Students
+     * @param creditsEnrolled
+     * @return universityFee + adminFee + healthInsurance (+ internationalTuition if not studyAbroad)
+     */
     @Override
     public double tuition(int creditsEnrolled) {
         if (isStudyAbroad){

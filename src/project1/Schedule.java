@@ -1,12 +1,13 @@
 package project1;
 
 import project2.Student;
+import util.List;
 
 /**
  * Class that defines overall schedule, including list of sections and number of sections
  * @author Shivang Patel
  */
-public class Schedule {
+public class Schedule extends List {
     private Section[] sections;
     private int numSections;
 

@@ -3,6 +3,10 @@ package project2;
 import project1.Major;
 import project1.Profile;
 
+/**
+ * Defines a student from the TriState area (New York or Connecticut), includes variable for state location
+ * @author Shivang Patel
+ */
 public class TriState extends NonResident{
     private final String newYork = "NY";
     private final String connecticut = "CT";
@@ -20,18 +24,22 @@ public class TriState extends NonResident{
         this.state = state;
     }
 
-
+    /**
+     * Tuition method for TriState students,
+     * @param creditsEnrolled
+     * @return
+     */
     @Override
     public double tuition(int creditsEnrolled) {
         boolean isFullTime = (creditsEnrolled >= 12); // 12+ credits is full time
         int remission;
-        switch(state) {
-            case (newYork):
-                remission = 4000;
-            case (connecticut):
-                remission = 5000;
-            default:
-                remission = 0;
+        if (this.state.equals("NY")) {
+            remission = 4000;
+        } else if (this.state.equals("CT")) {
+            remission = 5000;
+        }
+        else{
+            remission = 0;
         }
         if (isFullTime){
             boolean addAdditionalFee = (creditsEnrolled >= 16); // 16+ credits is additional fee

@@ -6,15 +6,16 @@ package project1;
  */
 
 import project2.Student;
+import util.List;
 
 import java.util.Arrays;
-public class Section {
+public class Section extends List {
 
     private Course course;
     private Instructor instructor;
     private Classroom classroom;
     private Time time;
-    private Student[] roster;
+    private StudentList roster;
     private int numStudents;
 
     /**
@@ -29,7 +30,7 @@ public class Section {
         this.instructor = instructor;
         this.classroom = classroom;
         this.time = time;
-        this.roster = new Student[4];
+        this.roster = new StudentList();
         this.numStudents = 0;
     }
 
@@ -38,7 +39,7 @@ public class Section {
      * @param student
      */
     public void enroll(Student student) {
-        roster[numStudents] = student;
+        roster.add(student);
         numStudents++;
     }
 
@@ -48,14 +49,14 @@ public class Section {
      */
     public void drop(Student student) {
         for (int i = 0; i < numStudents; i++){
-            if (roster[i].equals(student) && i < roster.length - 1){
+            if (roster.get(i).equals(student) && i < roster.getSize() - 1){
                 for (int j = i; j < numStudents - 1; j++){
-                    roster[j] = roster[j + 1];
+                    roster.set(j, roster.get(j+1));
                 }
-                roster[roster.length - 1] = null;
+                roster.set(roster.getSize() - 1, null);
             } // must shift elements left
-            else if (roster[i].equals(student) && i == roster.length - 1){
-                roster[i] = null;
+            else if (roster.get(i).equals(student) && i == roster.getSize() - 1){
+                roster.set(i, null);
             }
         }
         numStudents--;
@@ -67,8 +68,8 @@ public class Section {
      * @return true if student is found in section, false otherwise
      */
     public boolean contains(Student student) {
-        for (int i = 0; i < roster.length; i++){
-            if (roster[i].equals(student)){
+        for (int i = 0; i < roster.getSize(); i++){
+            if (roster.get(i).equals(student)){
                 return true;
             }
         }
@@ -99,7 +100,7 @@ public class Section {
         else{
             System.out.println("**Roster**");
             for (int i = 0; i < numStudents; i++){
-                System.out.println(roster[i].toString());
+                System.out.println(roster.get(i).toString());
             }
         }
     }
@@ -177,8 +178,8 @@ public class Section {
             if (this.getCourse().toString().equals(((Section) obj).getCourse().toString()) // check if courses are the same
             && this.getInstructor().toString().equals(((Section) obj).getInstructor().toString()) // check if instructors are the same
             && this.getClassroom().toString().equals(((Section) obj).getInstructor().toString()) // check if classrooms are the same
-            && this.getTime().toString().equals(((Section) obj).getTime().toString()) // check if times are the same
-            && Arrays.equals(this.roster, ((Section) obj).roster)){ // check if rosters are the same
+            && this.getTime().toString().equals(((Section) obj).getTime().toString())) // check if times are the same
+            {
                 return true;
             }
         }
